@@ -5,6 +5,8 @@
 image leenayoung_basic:
     ("이나영_기본.png")
     zoom 0.15
+image classroom = "교실_오전.png"
+
 
 define leenayoung = Character('이나영', color="#6bd8f3")
 default leenayoung_affection = 0
@@ -25,7 +27,7 @@ label start:
     
 
     user "그냥 모르는 척 하자..."
-
+    hide leenayoung_basic
     
     #골목길 배경
     "다음날"
@@ -34,13 +36,15 @@ label start:
     user "아무일 없을 거야"
     
     "교실에 들어간다."
+    scene classroom
+
 
     "자리를 확인한다."
-
+    play audio "의자끄는소리.mp3"
     "자리에 앉는다."
-        
 
     "의자를 빼다 뒷자리 아이의 의자를 쳤다."
+    play audio "연필떨어지는소리.mp3"
     "그로인해 샤프가 떨어졌다."
 
     "샤프를 주워 준다."
