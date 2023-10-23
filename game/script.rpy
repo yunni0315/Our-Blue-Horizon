@@ -7,11 +7,24 @@
 image leenayoung_basic:
     ("이나영_기본.png")
     zoom 0.4
+image leenayoung_smile:
+    ("이나영_웃음.png")
+    zoom 0.4
+image leenayoung_eye_smile:
+    ("이나영_눈웃음.png")
+    zoom 0.4
+image leenayoung_embarrassed:
+    ("이나영_당황.png")
+    zoom 0.4
+image leenayoung_cowardice:
+    ("이나영_겁.png")
+    zoom 0.4
+
 
 image note = "낡은노트.png"
 image notebook:
     ("notebook.png")
-    zoom 0.3
+    zoom 1.25
 
 
 #배경 이미지
@@ -28,6 +41,7 @@ default leenayoung_affection = 0
 define user = Character('[username]')
 define rightCharacter = Position(xalign = 0.0, yalign = -0.05)
 define character_center = Position(xalign = 0.5, yalign = 0.65)
+define leftChacter = Position(xalign = 0.3, yalign = 1.1)
 init:
     $ nayoung_point = 0
     
@@ -42,12 +56,13 @@ label start:
     #골목길 배경 2023년 3월 1일
     user "???"
     user "뭐지?"
-    show leenayoung_basic at rightCharacter
+    show leenayoung_cowardice at leftChacter:
+        zoom(0.3)
     "골목에서 한 여자아이가 괴롭힘(?)을 당하는 것을 보았다."
     
 
     user "그냥 모르는 척 하자..."
-    hide leenayoung_basic
+    hide leenayoung_cowardice
     
     #골목길 배경
     scene morning
@@ -71,7 +86,7 @@ label start:
     "샤프를 주워 준다."
 
     user "'어? 이나영'"
-    user "“아..여기 있어”"
+    user "아..여기 있어"
     #종소리
 
 
@@ -80,21 +95,27 @@ label start:
     #우당탕탕 하는 소리
     "일진 2" " 아 씨~~~발 뭐하냐?!!"
     "일진 2" "아 진짜 야 내가 너 걸리적거리지 말라 그랬지"
+    show leenayoung_embarrassed at rightCharacter
     leenayoung "미..미안.. 내가 잘못했어.."
+    hide leenayoung_embarrassed
+    show leenayoung_cowardice at rightCharacter
     "일진 3" "아ㅋㅋ ㅁㅊ~ 존나 누가 보면 우리가 괴롭히는 줄 알겠어~"
     "일진 1" "됐어 야 평생 저렇게 살라그래"
+    hide leenayoung_cowardice
     menu Help_in_cafeteria:
         "어떡해야하지?"
         "'급식 쏟아진거 주워줘야하나?'":
             $ nayoung_point += 1
             jump th1
-        "'그..그냥 가자...":
+        "'그..그냥 가자...'":
             $ nayoung_point += 0
             jump march
     
     label th1:
+        show leenayoung_basic at rightCharacter
         leenayoung "고마워...."
         leenayoung "근데 날 도와주지마.."
+        hide leenayoung_basic
         jump march
     
     label march:
@@ -108,7 +129,7 @@ label start:
             zoom(2.0)
         user "흠 다시 돌려드려야 하나"
         menu note_dilemma:
-            "'한번 열어볼까'?":
+            "'한번 열어볼까?'":
                 jump note_open
             "'음 그래도 다른 사람건데 열지 말자'":
                 jump note_nopen
@@ -135,5 +156,41 @@ label start:
 
         "다음장을 넘겨보았다."
         "???" "\"2023년 3월 13일, 나영이가 나에게 정식으로 인사한 날, 나영이 덕분에 그동안 몰랐던 어렸을 때 추억이 떠올랐다...\""
+        user "‘3월 13일.. 어 오늘이네? 뭐지..?’"
+
+        #문열리는 소리 넣으셈 + 발자국 소리도
+        user "'이게 진짜일까...?"
+        
+        leenayoung "안녕?"
+        hide notebook
+        show leenayoung_eye_smile at rightCharacter
+        user "어..! 어 그래 안녕!?"
+        user "‘우연인가..? 아님 진짠가..?’"
+        hide leenayoung_eye_smile
+        show leenayoung_basic at rightCharacter
+        leenayoung "우리 어렸을 때 같이 동네에서 놀았었는데 기억나?"
+        user "어 응.. 기억나지"
+        leenayoung "다행이다 나만 기억하는 줄 알았어"
+        user "하하.."
+        "........"
+        leenayoung "근데 왜 갑자기 이사갔던거야?"
+        user "아 그때는 아빠 일때문에 갈 수 밖에 없었거든.." 
+        user "근데 이젠 그 일도 다 끝나셔서  돌아온거지..!"
+        hide leenayoung_basic
+        show leenayoung_smile at rightCharacter
+        leenayoung "그렇구나! 이젠 어디 안가는 거지?"
+        user "그렇다고 볼 수 있지.."
+        hide leenayoung_smile 
+        show leenayoung_basic at rightCharacter
+        leenayoung "다행이야.. 친구가 생겨서"
+
+        #쾅 하고 문열리는 소리
+        "이수민" "하 진짜~ 말도 지지리 안들어요"
+        "김가영" "뭐냐 이 찔찔이는? 그새 친구도 사겼냐?"
+        "김가영" "끼리끼리 만나도 하필 이나영같은 애를 만나냐 ㅋㅋ"
+
+        "나는 가영이를 째려보았다."
+        "김가영" "이 찐따새끼가 뭘 꼬라봐?"
+        leenayoung "[user]\(이\)는 건들지마 내가 나갈게"
 
     return
