@@ -1,9 +1,4 @@
-﻿# 이 파일에 게임 스크립트를 입력합니다.
-
-# image 문을 사용해 이미지를 정의합니다.
-# image eileen happy = "eileen_happy.png"
-
-
+﻿#이나영 일러스트
 image leenayoung_basic:
     ("이나영_기본.png")
     zoom 0.4
@@ -20,7 +15,7 @@ image leenayoung_cowardice:
     ("이나영_겁.png")
     zoom 0.4
 
-
+#소품 이미지
 image note = "낡은노트.png"
 image notebook:
     ("notebook.png")
@@ -44,13 +39,23 @@ define character_center = Position(xalign = 0.5, yalign = 0.65)
 define leftChacter = Position(xalign = 0.3, yalign = 1.1)
 init:
     $ nayoung_point = 0
-    
+    $ dday = 2023
+    $ month = 3
+    $ day = 1
+    screen date:
+            frame:
+                xfill False
+                hbox:
+                    xalign .3 spacing 10
+                    text '[dday]년 [month]월 [day]일'
+
+
 label start:
 
     $ username = renpy. input('당신의 이름은?',length = 32)
 
     scene afternoon
-    
+    show screen date
     user "몇년만이지? 초2때 이사가고 고2때 이사 왔으니깐 거의 10년 만이네"
     
     #골목길 배경 2023년 3월 1일
@@ -63,10 +68,13 @@ label start:
 
     user "그냥 모르는 척 하자..."
     hide leenayoung_cowardice
+    hide screen date
     
     #골목길 배경
+    $ day + 1
+    show screen date
     scene morning
-    "다음날"
+    "--다음날--"
     user "전학생이라고 따돌리거나 하진 않겠지?"
     user "오늘은 3월 2일 반애들 끼리도 별로 안친할거야"
     user "아무일 없을 거야"
@@ -192,5 +200,41 @@ label start:
         "나는 가영이를 째려보았다."
         "김가영" "이 찐따새끼가 뭘 꼬라봐?"
         leenayoung "[user]\(이\)는 건들지마 내가 나갈게"
+
+        "일진들이 나영이를 데리고 나갔다."
+        user "어? 옛날에도 한번 이런적이.."
+
+        "--6살때--"
+        scene afternoon
+        user "아악~! 하지마"
+        "동네장난꾸러기들" "캬하하 이 바보 맨날 당하기만하고~"
+        "어린 이나영" "뭐야 너네들!"
+        "동네장난꾸러기들" "으악!! 도망가!!!"
+        "어린 이나영" "괜찮아?"
+        user "흑.. 고마오"
+        "어린 이나영" "쟤네들이 또 괴롭히면 말해 내가 언제든 도와줄게!!"
+
+        "--다시 현재--"
+        scene classroom
+        user "그래.. 나영이가 날 도와줬었어 어릴때부터.."
+        show notebook at character_center
+        "???" "\"누군가 나에게 지금까지 후회되는 일이 있냐고 묻는다면..\"" 
+        "???" "\"20년전 나영이를 도와주지 못한것이다.. 그때 나영이를 알아봤다면 결말은 달라졌을까?\""
+        "???" "\"......나영이가 떠나기 전으로 돌아가고 싶다\""
+        hide notebook
+        menu what:
+            "'뭐지..? 나영이가 떠난다고?'"
+            "이거 진짜 무슨 노트지?":
+                jump save_nayoung
+            "이건 대체....":
+                jump save_nayoung
+        
+    label save_nayoung:
+        user "이 노트가 진짜 무슨 미래에서 온 노트이든, 걍 아무개가 쓴 미친 종이 쪼까리든.."
+        user "나영이를 구해줘야 하는 건 변하지 않아."
+
+        hide classroom
+        "--다음날--"
+        
 
     return
