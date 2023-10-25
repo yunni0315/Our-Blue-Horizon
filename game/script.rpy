@@ -30,24 +30,19 @@ image afternoon = "골목_노을.png"
 image night = "골목_저녁.png"
 image cafeteria = "급식실.png"
 
-
 define leenayoung = Character('이나영', color="#6bd8f3")
-default leenayoung_affection = 0
 define user = Character('[username]')
+define choi = Character('최은지', color = "#b46bf3")
+define lee = Character('이수민', color = "#40e940")
+define kim = Character('김가영', color = "#fcab42")
+
+default leenayoung_affection = 0
 define rightCharacter = Position(xalign = 0.0, yalign = -0.05)
 define character_center = Position(xalign = 0.5, yalign = 0.65)
 define leftChacter = Position(xalign = 0.3, yalign = 1.1)
 init:
     $ nayoung_point = 0
-    $ dday = 2023
-    $ month = 3
-    $ day = 1
-    screen date:
-            frame:
-                xfill False
-                hbox:
-                    xalign .3 spacing 10
-                    text '[dday]년 [month]월 [day]일'
+
 
 
 label start:
@@ -55,7 +50,7 @@ label start:
     $ username = renpy. input('당신의 이름은?',length = 32)
 
     scene afternoon
-    show screen date
+    "2023년 3월 1일"
     user "몇년만이지? 초2때 이사가고 고2때 이사 왔으니깐 거의 10년 만이네"
     
     #골목길 배경 2023년 3월 1일
@@ -71,10 +66,9 @@ label start:
     hide screen date
     
     #골목길 배경
-    $ day + 1
-    show screen date
+    
     scene morning
-    "--다음날--"
+    "2023년 3월 2일"
     user "전학생이라고 따돌리거나 하진 않겠지?"
     user "오늘은 3월 2일 반애들 끼리도 별로 안친할거야"
     user "아무일 없을 거야"
@@ -100,15 +94,16 @@ label start:
 
     #대충 몇일 지남 날자 표시하기로 알 수 있게끔
     scene cafeteria
+    "2023년 3월 10일"
     #우당탕탕 하는 소리
-    "일진 2" " 아 씨~~~발 뭐하냐?!!"
-    "일진 2" "아 진짜 야 내가 너 걸리적거리지 말라 그랬지"
+    lee " 아 씨~~~발 뭐하냐?!!"
+    lee "아 진짜 야 내가 너 걸리적거리지 말라 그랬지"
     show leenayoung_embarrassed at rightCharacter
     leenayoung "미..미안.. 내가 잘못했어.."
     hide leenayoung_embarrassed
     show leenayoung_cowardice at rightCharacter
-    "일진 3" "아ㅋㅋ ㅁㅊ~ 존나 누가 보면 우리가 괴롭히는 줄 알겠어~"
-    "일진 1" "됐어 야 평생 저렇게 살라그래"
+    kim "아ㅋㅋ ㅁㅊ~ 존나 누가 보면 우리가 괴롭히는 줄 알겠어~"
+    choi "됐어 야 평생 저렇게 살라그래"
     hide leenayoung_cowardice
     menu Help_in_cafeteria:
         "어떡해야하지?"
@@ -129,6 +124,7 @@ label start:
     label march:
         scene morning
         #날짜, 툭하는 소리
+        "2023년 3월 13일"
         show note
         user "어 이거 떨어뜨리셨는데.."
 
@@ -167,6 +163,8 @@ label start:
         user "‘3월 13일.. 어 오늘이네? 뭐지..?’"
 
         #문열리는 소리 넣으셈 + 발자국 소리도
+        play audio "문여는 소리.mp3"
+        play audio "발자국 소리.mp3"
         user "'이게 진짜일까...?"
         
         leenayoung "안녕?"
@@ -193,12 +191,26 @@ label start:
         leenayoung "다행이야.. 친구가 생겨서"
 
         #쾅 하고 문열리는 소리
-        "이수민" "하 진짜~ 말도 지지리 안들어요"
-        "김가영" "뭐냐 이 찔찔이는? 그새 친구도 사겼냐?"
-        "김가영" "끼리끼리 만나도 하필 이나영같은 애를 만나냐 ㅋㅋ"
+        play audio "문여는 소리.mp3"
+        choi "야 이나영 너 내가 일찍 오라그랬지"
+
+        lee "하 진짜~ 말도 지지리 안들어요"
+        kim "뭐냐 이 찔찔이는? 그새 친구도 사겼냐?"
+        kim "끼리끼리 만나도 하필 이나영같은 애를 만나냐 ㅋㅋ"
 
         "나는 가영이를 째려보았다."
-        "김가영" "이 찐따새끼가 뭘 꼬라봐?"
+        kim "이 찐따새끼가 뭘 꼬라봐?"
+        menu fight:
+            "'히익 저 드러운 눈깔 좀 봐..  가만히 있어야지'":
+                jump pastsceen
+            "'뭐 찐따새끼? 이게..!'":
+                jump realfight
+
+    label realfight:
+        kim "뭘 꼬라봐?!"
+        jump pastsceen
+
+    label pastsceen:            
         leenayoung "[user]\(이\)는 건들지마 내가 나갈게"
 
         "일진들이 나영이를 데리고 나갔다."
@@ -230,11 +242,43 @@ label start:
                 jump save_nayoung
         
     label save_nayoung:
+        hide classroom
         user "이 노트가 진짜 무슨 미래에서 온 노트이든, 걍 아무개가 쓴 미친 종이 쪼까리든.."
         user "나영이를 구해줘야 하는 건 변하지 않아."
 
-        hide classroom
-        "--다음날--"
-        
+        scene classroom
+        "2023년 3월 14일"
+        kim "야 이나영, 나와"
+
+        user "나영아!"
+        choi " ..?뭐야 저 새낀"
+        lee "너 저번에 갠가? 걍 신경 끄고 가?"
+        user "우리 발표 같은 조거든..? 같이 준비할게 있어"
+        choi "허 ㅋㅋㅋㅋ 개어이털리네"
+        kim "우리가 우습지? 확씨그냥"
+
+        "선생님" "뭐야! 너네들 우리반 아닌 애들 다 나가!"
+        choi "하."
+        "최은지가 입모양으로 뭐라 그런다."
+        user "'우오오아?'"
+        jump first_date
+    
+    label first_date:
+        "2023년 3월 24일"
+        user "나영아..!"
+        leenayoung "어? 으응..?"
+        user "이번주에 혹시 뭐 다른거 있어?"
+        leenayoung "아니..  없어.. 왜?"
+        user "그..이번 주말에 시간되나해서"
+        leenayoung "..."
+        leenayoung "?!?!"
+        leenayoung "호...혹시.."
+        leenayoung "이거....."
+        leenayoung "데이트..?"
+        user "어?!"
+        user "어...어떻게 보면 그렇지?"
+        user "싫어?"
+        leenayoung "아니"
+        leenayoung "좋아..."
 
     return
