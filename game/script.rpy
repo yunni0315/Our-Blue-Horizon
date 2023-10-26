@@ -427,7 +427,7 @@ label first_date:
             show choienji
             user "그냥 나가지? 곧 종도 치는데" 
             user "그리고.." 
-            user "아무리 너가 좀 잘나가고 그래도 난 너한테 안 맞고 다니지 안그래?"
+            user " 솔직히 나같으면 쪽팔려서 못 들어온다 "
 
             
             "반친구들" "뭐야 뭐야 주인공이 저런 애였어?"
@@ -533,7 +533,7 @@ label first_date:
 
     user "저요!"
 
-    "선생님" "그래 그럼 주인공이 까지 하고 마무리하자"
+    "선생님" "그래 그럼 [username]이 까지 하고 마무리하자"
     "선생님" "차례대로 나와서 공약 발표 해볼까?"
 
     "학생1" "저는 반장이 된다면~..."
@@ -555,7 +555,7 @@ label first_date:
     "~하교길~"
     scene afternoon
     show leenayoung_smile at cneterCharacter
-    leenayoung "반장된거 축하해 00아! 너가 될줄 알았어"
+    leenayoung "반장된거 축하해 [username]아! 너가 될줄 알았어"
     user "너 덕분이지 뭐.."
     leenayoung "아니야 너가 잘한거야"
     user "ㅎㅎ 고맙다"
@@ -564,7 +564,7 @@ label first_date:
     "터벅터벅.."
     show leenayoung_embarrassing at cneterCharacter_for_embarrsing
 
-    leenayoung "00아.. 나 할말있어"
+    leenayoung "[username]아.. 나 할말있어"
     user "왜?"
     leenayoung "그…  그게.. 뭐냐면.."
     hide leenayoung_embarrassing
@@ -578,7 +578,7 @@ label first_date:
     user "...으으으으으응??????????"
     user "나..나랑?" 
     show leenayoung_embarrassing at cneterCharacter_for_embarrsing
-    leenayoung "'끄던끄던'"#(부끄러운 표정으로) (끄덕끄덕)
+    leenayoung "'끄덕끄덕'"#(부끄러운 표정으로) (끄덕끄덕)
     user "어어.."  
     hide leenayoung_embarrassing
 
@@ -602,6 +602,8 @@ label love:
     hide leenayoung_Totally_shameful
     show leenayoung_embarrassing at cneterCharacter_for_embarrsing
     leenayoung "그..그럼"
+    hide leenayoung_embarrassing
+    show leenayoung_smile at cneterCharacter
     leenayoung "오늘부터 1일이다!!!"
     jump credits_happy
 
@@ -626,12 +628,24 @@ label credits_happy:
     $ credits_speed = 25 #scrolling speed in seconds
     scene black #replace this with a fancy background
     with dissolve
-    show Day_1_From_Today:
+    show couple:
         yanchor 0.5 ypos 0.5
         xanchor 0.5 xpos 0.5
     with dissolve
     with Pause(3)
-    hide Day_1_From_Today
+    hide couple
+    show theend:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(3)
+    hide theend
+    show ver:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(3)
+    hide ver
     show cred at Move((0.5, 5.0), (0.5, 0.0), credits_speed, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
     with Pause(credits_speed)
     show thanks:
@@ -646,12 +660,24 @@ label credits_friends:
     $ credits_speed = 25 #scrolling speed in seconds
     scene black #replace this with a fancy background
     with dissolve
-    show Lets_be_Friends:
+    show wejustfriend:
         yanchor 0.5 ypos 0.5
         xanchor 0.5 xpos 0.5
     with dissolve
     with Pause(3)
-    hide Lets_be_Friends
+    hide wejustfriend
+    show theend:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(3)
+    hide theend
+    show ver:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(3)
+    hide ver
     show cred at Move((0.5, 5.0), (0.5, 0.0), credits_speed, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
     with Pause(credits_speed)
     show thanks:
@@ -676,5 +702,8 @@ init python:
 init:
 #    image cred = Text(credits_s, font="myfont.ttf", text_align=0.5) #use this if you want to use special fonts
     image cred = Text(credits_s, text_align=0.5)
-    image theend = Text("{size=80}The end", text_align=0.5)
+    image couple = Text("{size=80}오늘부터 1일!!", text_align=0.5)
+    image wejustfriend = Text("{size=80}친구로 지내자", text_align=0.5)
+    image theend = Text("{size=60}제작: 21001 김도윤, 20204 권근수, 21007 박주영(글), 오리(그림)", text_align=0.5)
+    image ver = Text("{size=75}풀리지 않은 이야기와 떡밥은 정식버전에서 보실 수 있습니다.", text_align=0.5)
     image thanks = Text("{size=80}Thanks for Playing!", text_align=0.5)

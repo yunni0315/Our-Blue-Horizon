@@ -1,22 +1,65 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 567, in script
-    uaer "왜?"
-Exception: Sayer 'uaer' is not defined.
+While loading <renpy.display.im.Image object ('게임을 즐겨주셔서 감사합니다.') at 0x000000000518a910>:
+  File "game/script.rpy", line 646, in script
+    with Pause(credits_speed)
+OSError: Couldn't find file '게임을 즐겨주셔서 감사합니다.'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 567, in script
-    uaer "왜?"
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ast.py", line 890, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ast.py", line 783, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'uaer' is not defined.
+  File "game/script.rpy", line 646, in script
+    with Pause(credits_speed)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ast.py", line 1678, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\exports.py", line 1758, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 2978, in do_with
+    return self.interact(trans_pause=True,
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 4175, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 2782, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transition.py", line 93, in render
+    return null_render(self, width, height, st, at)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transition.py", line 64, in null_render
+    surf = renpy.display.render.render(d.new_widget,
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transform.py", line 909, in render
+    return RenderTransform(self).render(width, height, st, at)
+  File "accelerator.pyx", line 979, in renpy.display.accelerator.RenderTransform.render
+  File "accelerator.pyx", line 404, in renpy.display.accelerator.RenderTransform.render_child
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 676, in render
+    return cache.get(self, render=True)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 330, in get
+    surf = image.load()
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 803, in load
+    raise e
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 757, in load
+    filelike = renpy.loader.load(self.filename, directory="images")
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\loader.py", line 833, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file '게임을 즐겨주셔서 감사합니다.'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.1.3.23091805
 Our Blue Horizon 1.0
-Thu Oct 26 02:54:22 2023
+Thu Oct 26 09:33:47 2023
