@@ -1,29 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?} in '{2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?}'.:
-  File "game/script.rpy", line 131, in script
-    "???" "{2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?}"
-Exception: Unknown text tag '2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?'
+While loading <renpy.display.im.Image object ('게임을 즐겨주셔서 감사합니다.') at 0x000000000518a910>:
+  File "game/script.rpy", line 646, in script
+    with Pause(credits_speed)
+OSError: Couldn't find file '게임을 즐겨주셔서 감사합니다.'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 131, in script
-    "???" "{2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?}"
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ast.py", line 930, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\exports.py", line 1472, in say
-    renpy.store.say(who, what, *args, **kwargs)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\defaultstore.py", line 418, in say
-    who(what, interact=interact, *args, **kwargs)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\character.py", line 1352, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\character.py", line 1003, in do_display
-    display_say(who,
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\character.py", line 693, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "game/script.rpy", line 646, in script
+    with Pause(credits_speed)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\ast.py", line 1678, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\exports.py", line 1758, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 2978, in do_with
+    return self.interact(trans_pause=True,
   File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 3582, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
   File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\core.py", line 4175, in interact_core
@@ -36,39 +28,38 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transition.py", line 93, in render
+    return null_render(self, width, height, st, at)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transition.py", line 64, in null_render
+    surf = renpy.display.render.render(d.new_widget,
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
   File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\screen.py", line 731, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
   File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 1338, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\transform.py", line 909, in render
+    return RenderTransform(self).render(width, height, st, at)
+  File "accelerator.pyx", line 979, in renpy.display.accelerator.RenderTransform.render
+  File "accelerator.pyx", line 404, in renpy.display.accelerator.RenderTransform.render_child
   File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\text\text.py", line 2171, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\text\text.py", line 629, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\text\text.py", line 1289, in segment
-    raise Exception("Unknown text tag %r" % text)
-Exception: Unknown text tag '2023년 3월 10일, 최은지네 무리가 나영이에게 급식실에서 해코지를 했다.왜 그들은 나영이에게 그러는 것일까?'
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 676, in render
+    return cache.get(self, render=True)
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 330, in get
+    surf = image.load()
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 803, in load
+    raise e
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\display\im.py", line 757, in load
+    filelike = renpy.loader.load(self.filename, directory="images")
+  File "C:\Users\asus\Desktop\renpy-8.1.3-sdk\renpy\loader.py", line 833, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file '게임을 즐겨주셔서 감사합니다.'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.1.3.23091805
 Our Blue Horizon 1.0
-Mon Oct 23 16:18:28 2023
+Thu Oct 26 09:33:47 2023
